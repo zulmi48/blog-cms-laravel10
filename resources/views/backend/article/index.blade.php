@@ -2,6 +2,7 @@
 @section('title', 'Article')
 @section('title-page', 'Article')
 @push('css')
+    <link href="{{ asset('css/datatables.min.css') }}" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -14,12 +15,13 @@
         <button class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#create-modal"><i
                 class="bi bi-file-earmark-plus"></i></button>
         @include('backend.layouts.error-validation')
-        <table class="table table-responsive" id="data-articles">
+        <table class="table table-striped" id="data-articles">
             <thead>
                 <tr>
                     <th>No.</th>
                     <th>Title</th>
                     <th>Category</th>
+                    <th>Views</th>
                     <th>Status</th>
                     <th>Publish Date</th>
                     <th class="text-center">Action</th>
@@ -28,10 +30,13 @@
             <tbody>
                 @foreach ($articles as $article)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td class="text-center">{{ $loop->iteration }}</td>
                         <td>{{ $article->title }}</td>
                         <td>{{ $article->categories->name }}</td>
-                        <td>{{ $article->status }}</td>
+                        <td class="text-center">{{ $article->views }}</td>
+                        <td>
+                            {!! $article->status == 0 ? '<span class="badge bg-danger">Private</span>' : '<span class="badge bg-success">Published</span>' !!}                            
+                        </td>
                         <td>{{ $article->publish_date }}</td>
                         <td>
                             <div class="text-center">
@@ -50,6 +55,12 @@
         </table>
     </div>
 @endsection
-
+<script src="{{ asset('js/datatables.min.js') }}"></script>
 @push('js')
+    <script src="DataTables/datatables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#data-articles").DataTable();
+        });
+    </script>
 @endpush
