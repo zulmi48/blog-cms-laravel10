@@ -12,8 +12,7 @@
                 {{ session('message') }}
             </div>
         @endif
-        <a class="btn btn-success mb-2" href="{{ route('article.create') }}"><i
-                class="bi bi-file-earmark-plus"></i></a>
+        <a class="btn btn-success mb-2" href="{{ route('article.create') }}"><i class="bi bi-file-earmark-plus"></i></a>
         <table class="table table-striped" id="data-articles">
             <thead>
                 <tr>
@@ -34,18 +33,16 @@
                         <td>{{ $article->categories->name }}</td>
                         <td class="text-center">{{ $article->views }}</td>
                         <td>
-                            {!! $article->status == 0 ? '<span class="badge bg-danger">Private</span>' : '<span class="badge bg-success">Published</span>' !!}                            
+                            {!! $article->status == 0
+                                ? '<span class="badge bg-danger">Private</span>'
+                                : '<span class="badge bg-success">Published</span>' !!}
                         </td>
                         <td>{{ $article->publish_date }}</td>
                         <td>
                             <div class="text-center">
-                                <button class="btn btn-info btn-sm"><i class="bi bi-box-arrow-up-right"></i></button>
-                                <button class="btn btn-secondary btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#update-modal{{ $article->id }}"><i
-                                        class="bi bi-pencil-fill"></i></button>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#delete-modal{{ $article->id }}"><i
-                                        class="bi bi-eraser-fill"></i></button>
+                                <a href="{{ route('article.show', $article->id) }}" class="btn btn-info btn-sm"><i class="bi bi-box-arrow-up-right"></i></a>
+                                <button class="btn btn-secondary btn-sm"><i class="bi bi-pencil-fill"></i></button>
+                                <button class="btn btn-danger btn-sm"><i class="bi bi-eraser-fill"></i></button>
                             </div>
                         </td>
                     </tr>

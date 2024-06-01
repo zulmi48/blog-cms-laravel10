@@ -36,7 +36,7 @@ class ArticleController extends Controller
 
         $file = $request->file('img');
         $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
-        // $file->storeAs('public/back/', $fileName);
+        $file->storeAs('public/back/', $fileName);
 
         $validated['slug'] = Str::slug($validated['title']);
         $validated['img'] = $fileName;
@@ -51,7 +51,9 @@ class ArticleController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('backend.article.show', [
+            'article' => Article::find($id),
+        ]);
     }
 
     /**

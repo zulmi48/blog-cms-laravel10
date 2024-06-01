@@ -9,19 +9,19 @@
         <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="#">
+                    <a class="nav-link d-flex align-items-center gap-2" aria-current="page" href="#">
                         <i class="bi bi-house-door-fill"></i>
                         Dashboard
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="{{ route('article.index') }}">
+                    <a class="nav-link d-flex align-items-center gap-2 @if(Route::currentRouteName() =='article.index') active @endif" href="{{ route('article.index') }}">
                         <i class="bi bi-card-text "></i>
                         Article
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="{{ route('category.index') }}">
+                    <a class="nav-link d-flex align-items-center gap-2 @if(Route::currentRouteName() =='category.index') active @endif" href="{{ route('category.index') }}">
                         <i class="bi bi-list-task"></i>
                         Category
                     </a>
