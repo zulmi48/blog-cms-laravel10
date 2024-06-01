@@ -11,7 +11,7 @@ class Article extends Model
     use HasFactory;
 
     protected $fillable = [
-        'category_id', 'title', 'slug', 'description', 'img', 'views', 'status', 'publish_date'
+        'categories_id', 'title', 'slug', 'description', 'img', 'views', 'status', 'publish_date'
     ];
 
     public function categories(): BelongsTo

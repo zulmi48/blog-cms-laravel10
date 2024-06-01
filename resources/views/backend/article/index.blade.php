@@ -12,9 +12,8 @@
                 {{ session('message') }}
             </div>
         @endif
-        <button class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#create-modal"><i
-                class="bi bi-file-earmark-plus"></i></button>
-        @include('backend.layouts.error-validation')
+        <a class="btn btn-success mb-2" href="{{ route('article.create') }}"><i
+                class="bi bi-file-earmark-plus"></i></a>
         <table class="table table-striped" id="data-articles">
             <thead>
                 <tr>
