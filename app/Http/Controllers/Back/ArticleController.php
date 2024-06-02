@@ -34,7 +34,7 @@ class ArticleController extends Controller
             'status' => 'required',
             'publish_date' => 'required',
         ]);
-        
+
         $file = $request->file('img');
         $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
         $file->storeAs('public/back/', $fileName);
@@ -78,7 +78,7 @@ class ArticleController extends Controller
             $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
             $file->storeAs('public/back/', $fileName);
 
-            Storage::delete('public/back/'.$request->oldImg);
+            Storage::delete('public/back/' . $request->oldImg);
 
             $validated['img'] = $fileName;
         } else {
@@ -92,11 +92,14 @@ class ArticleController extends Controller
         return redirect()->route('article.index')->with('message', 'Article has been updated');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        $article = Article::find($id);
+        Storage::delete('public/back/' . $article->img);
+        $article->delete();
+
+        return response()->json([
+            'message' => "Article has been deleted"
+        ]);
     }
 }

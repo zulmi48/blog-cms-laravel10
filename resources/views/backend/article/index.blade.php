@@ -7,11 +7,7 @@
 
 @section('content')
     <div class="p-3">
-        @if (session('message'))
-            <div class="mb-3 alert alert-success">
-                {{ session('message') }}
-            </div>
-        @endif
+        <div class="swal" data-swal="{{ session('message') }}"></div>
         <a class="btn btn-success mb-2" href="{{ route('article.create') }}"><i class="bi bi-file-earmark-plus"></i></a>
         <table class="table table-striped" id="data-articles">
             <thead>
@@ -44,7 +40,8 @@
                                         class="bi bi-box-arrow-up-right"></i></a>
                                 <a href="{{ route('article.edit', $article->id) }}" class="btn btn-secondary btn-sm"><i
                                         class="bi bi-pencil-fill"></i></a>
-                                <button class="btn btn-danger btn-sm"><i class="bi bi-eraser-fill"></i></button>
+                                <a id="delete" onclick="deleteArticle(this)" data-id="{{ $article->id }}"
+                                    class="btn btn-danger btn-sm"><i class="bi bi-eraser-fill"></i></a>
                             </div>
                         </td>
                     </tr>
@@ -55,10 +52,61 @@
 @endsection
 <script src="{{ asset('js/datatables.min.js') }}"></script>
 @push('js')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="DataTables/datatables.min.js"></script>
+    {{-- Data Table --}}
     <script>
         $(document).ready(function() {
             $("#data-articles").DataTable();
         });
+    </script>
+    {{-- Sweet Alert --}}
+    <script>
+        // Success Alert
+        const swal = $('.swal').data('swal')
+        if (swal) {
+            Swal.fire({
+                title: 'Success',
+                text: swal,
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        }
+
+        // Delete Confirmation
+        function deleteArticle(e) {
+            let id = e.getAttribute('data-id')
+            Swal.fire({
+                title: "Delete",
+                text: "Are you sure want to delete this?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: "Yes",
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: 'DELETE',
+                        url: '/article/' + id,
+                        dataType: "json",
+                        success: function(response) {
+                            Swal.fire({
+                                title: 'Success',
+                                text: response.message,
+                                icon: 'success',
+                            }).then((result) => {
+                                window.location.href = '/article'
+                            })
+                        },
+                        error: function(xhr, ajaxOptions, throwError) {
+                            alert(xhr.status + "\n" + xhr.responseText + "\n" + throwError)
+                        }
+                    })
+                }
+            })
+        }
     </script>
 @endpush

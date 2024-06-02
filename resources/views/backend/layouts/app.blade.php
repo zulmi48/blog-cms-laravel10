@@ -2,6 +2,7 @@
 <html lang="en" data-bs-theme="auto">
 
 <head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="{{ asset('js/color-mode.js') }}"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
