@@ -1,12 +1,13 @@
 @extends('backend.layouts.app')
-@section('title', 'Create Article')
-@section('title-page', 'Create New Article')
+@section('title', 'Edit Article')
+@section('title-page', 'Edit Article')
 
 @section('content')
     <div class="p-3">
         @include('backend.layouts.error-validation')
-        <form action="{{ route('article.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('article.update', $article->id) }}" method="post" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <div class="row">
                 <div class="col-6">
                     <div class="mb-3">
@@ -15,7 +16,7 @@
                             class="form-control @error('title')
                         is-invalid
                     @enderror"
-                            name="title" id="title" value="{{ old('title') }}">
+                            name="title" id="title" value="{{ old('title', $article->title) }}">
                     </div>
                 </div>
                 <div class="col-6">
@@ -26,9 +27,12 @@
                         is-invalid
                     @enderror"
                             name="categories_id" id="category">
-                            <option value="" hidden>-- Choose --</option>
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @if ($category->id == $article->categories_id)
+                                    <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                                @else
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
@@ -38,15 +42,19 @@
                     <textarea name="description" id="descripton" cols="30" rows="5"
                         class="form-control @error('description')
                     is-invalid
-                @enderror">{{ old('description') }}</textarea>
+                @enderror">{{ old('description', $article->description) }}</textarea>
                 </div>
                 <div class="mb-3">
                     <label for="img">Image (Maks 2MB)</label>
                     <input type="file" name="img" id="img"
                         class="form-control @error('img')
                     is-invalid
-                @enderror"
-                        value="{{ old('img') }}">
+                @enderror">
+                    <input type="text" name="oldImg" value="{{ $article->img }}" hidden>
+                    <div class="mt-1">
+                        <small>Current Image</small><br>
+                        <img src="{{ asset('storage/back/' . $article->img) }}" alt="" width="10%">
+                    </div>
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
@@ -55,9 +63,8 @@
                             class="form-control @error('status')
                         is-invalid
                     @enderror">
-                            <option value="" hidden>-- Choose --</option>
-                            <option value="0">Private</option>
-                            <option value="1">Published</option>
+                            <option value="0" {{ $article->status == 0 ? 'selected' : null }}>Private</option>
+                            <option value="1" {{ $article->status == 1 ? 'selected' : null }}>Published</option>
                         </select>
                     </div>
                 </div>
@@ -68,7 +75,7 @@
                             class="form-control @error('publish_date')
                         is-invalid
                     @enderror"
-                            value="{{ old('publish_date') }}">
+                            value="{{ old('publish_date', $article->publish_date) }}">
                     </div>
                 </div>
             </div>

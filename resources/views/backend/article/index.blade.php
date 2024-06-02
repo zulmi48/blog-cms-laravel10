@@ -40,8 +40,10 @@
                         <td>{{ $article->publish_date }}</td>
                         <td>
                             <div class="text-center">
-                                <a href="{{ route('article.show', $article->id) }}" class="btn btn-info btn-sm"><i class="bi bi-box-arrow-up-right"></i></a>
-                                <button class="btn btn-secondary btn-sm"><i class="bi bi-pencil-fill"></i></button>
+                                <a href="{{ route('article.show', $article->id) }}" class="btn btn-info btn-sm"><i
+                                        class="bi bi-box-arrow-up-right"></i></a>
+                                <a href="{{ route('article.edit', $article->id) }}" class="btn btn-secondary btn-sm"><i
+                                        class="bi bi-pencil-fill"></i></a>
                                 <button class="btn btn-danger btn-sm"><i class="bi bi-eraser-fill"></i></button>
                             </div>
                         </td>
