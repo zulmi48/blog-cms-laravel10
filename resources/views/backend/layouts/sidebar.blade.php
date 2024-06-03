@@ -15,13 +15,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2 @if(Route::currentRouteName() =='article.index') active @endif" href="{{ route('article.index') }}">
+                    <a class="nav-link d-flex align-items-center gap-2 @if (Route::currentRouteName() == 'article.index') active @endif"
+                        href="{{ route('article.index') }}">
                         <i class="bi bi-card-text "></i>
                         Article
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2 @if(Route::currentRouteName() =='category.index') active @endif" href="{{ route('category.index') }}">
+                    <a class="nav-link d-flex align-items-center gap-2 @if (Route::currentRouteName() == 'category.index') active @endif"
+                        href="{{ route('category.index') }}">
                         <i class="bi bi-list-task"></i>
                         Category
                     </a>
