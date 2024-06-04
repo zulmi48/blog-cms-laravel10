@@ -26,6 +26,6 @@
     </div> --}}
 
     <div class="float-end text-white me-3">
-        <small>{{ auth()->user()->name }}</small>
+        <small>{{ auth()->user()->name }} {{ auth()->user()->role == 1 ? '(Admin)' : '' }}</small>
     </div>
 </header>

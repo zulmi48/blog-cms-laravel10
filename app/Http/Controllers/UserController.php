@@ -9,7 +9,11 @@ class UserController extends Controller
 {
     function index()
     {
-        $users = User::latest()->get();
+        if (auth()->user()->role == 1) {
+            $users = User::get();
+        }else{
+            $users = User::whereId(auth()->user()->id)->get();
+        }
         return view('backend.user.index', compact('users'));
     }
 

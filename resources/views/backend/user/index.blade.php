@@ -5,8 +5,10 @@
 @section('content')
     <div class="p-3">
         <div class="swal" data-swal="{{ session('message') }}"></div>
-        <button class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#create-modal">Register</button>
-        @include('backend.layouts.error-validation')
+        @if (auth()->user()->role == 1)
+            <button class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#create-modal">Register</button>
+            @include('backend.layouts.error-validation')
+        @endif
         <table class="table table-responsive">
             <thead>
                 <tr>
@@ -28,8 +30,12 @@
                             <div class="text-center">
                                 <button class="btn btn-secondary btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#update-modal{{ $user->id }}">Edit</button>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#delete-modal{{ $user->id }}">Delete</button>
+                                @if (auth()->user()->role == 1)
+                                    @if ($user->id != auth()->user()->role)
+                                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#delete-modal{{ $user->id }}">Delete</button>
+                                    @endif
+                                @endif
                             </div>
                         </td>
                     </tr>

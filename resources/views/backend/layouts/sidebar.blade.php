@@ -22,13 +22,15 @@
                         Article
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2 @if (Route::currentRouteName() == 'category.index') active @endif"
-                        href="{{ route('category.index') }}">
-                        <i class="bi bi-list-task"></i>
-                        Category
-                    </a>
-                </li>
+                @if (auth()->user()->role == 1)
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center gap-2 @if (Route::currentRouteName() == 'category.index') active @endif"
+                            href="{{ route('category.index') }}">
+                            <i class="bi bi-list-task"></i>
+                            Category
+                        </a>
+                    </li>
+                @endif
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center gap-2 @if (Route::currentRouteName() == 'user.index') active @endif"
                         href="{{ route('user.index') }}">
