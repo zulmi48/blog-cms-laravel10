@@ -48,7 +48,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->title }}</td>
                                 <td>{{ $item->categories->name }}</td>
-                                <td>{{ $item->created_at }}</td>
+                                <td>{{ $item->created_at->format('d M, Y') }}</td>
                                 <td>
                                     <a href="{{ route('article.show', $item->id) }}"
                                         class="btn btn-sm btn-outline-secondary">Detail</a>
@@ -66,7 +66,7 @@
                             <th>No</th>
                             <th>Title</th>
                             <th>Category</th>
-                            <th>Created At</th>
+                            <th>Views</th>
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
@@ -76,7 +76,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->title }}</td>
                                 <td>{{ $item->categories->name }}</td>
-                                <td>{{ $item->created_at }}</td>
+                                <td>{{ $item->views }}x</td>
                                 <td>
                                     <a href="{{ route('article.show', $item->id) }}"
                                         class="btn btn-sm btn-outline-secondary">Detail</a>

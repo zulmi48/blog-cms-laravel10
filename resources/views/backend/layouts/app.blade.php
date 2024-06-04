@@ -19,7 +19,7 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
-
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('css')
 </head>
 

@@ -47,10 +47,10 @@ class ArticleController extends Controller
         return redirect()->route('article.index')->with('message', 'New article has been added');
     }
 
-    public function show(string $id)
+    public function show(string $slug)
     {
         return view('backend.article.show', [
-            'article' => Article::find($id),
+            'article' => Article::where('slug', $slug)->firstOrFail(),
         ]);
     }
 

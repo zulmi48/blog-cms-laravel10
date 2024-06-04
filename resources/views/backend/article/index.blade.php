@@ -36,7 +36,7 @@
                         <td>{{ $article->publish_date }}</td>
                         <td>
                             <div class="text-center">
-                                <a href="{{ route('article.show', $article->id) }}" class="btn btn-info btn-sm"><i
+                                <a href="{{ route('article.show', $article->slug) }}" class="btn btn-info btn-sm"><i
                                         class="bi bi-box-arrow-up-right"></i></a>
                                 <a href="{{ route('article.edit', $article->id) }}" class="btn btn-secondary btn-sm"><i
                                         class="bi bi-pencil-fill"></i></a>
