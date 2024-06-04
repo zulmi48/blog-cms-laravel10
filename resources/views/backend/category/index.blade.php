@@ -4,11 +4,7 @@
 
 @section('content')
     <div class="p-3">
-        @if (session('message'))
-            <div class="mb-3 alert alert-success">
-                {{ session('message') }}
-            </div>
-        @endif
+        <div class="swal" data-swal="{{ session('message') }}"></div>
         <button class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#create-modal"><i
                 class="bi bi-file-earmark-plus"></i></button>
         @include('backend.layouts.error-validation')
@@ -49,3 +45,19 @@
     @include('backend.category.update-modal')
     @include('backend.category.delete-modal')
 @endsection
+@push('js')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // Success Alert
+        const swal = $('.swal').data('swal')
+        if (swal) {
+            Swal.fire({
+                title: 'Success',
+                text: swal,
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        }
+    </script>
+@endpush

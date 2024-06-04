@@ -50,10 +50,9 @@
         </table>
     </div>
 @endsection
-<script src="{{ asset('js/datatables.min.js') }}"></script>
 @push('js')
+    <script src="{{ asset('js/datatables.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="DataTables/datatables.min.js"></script>
     {{-- Data Table --}}
     <script>
         $(document).ready(function() {

@@ -4,11 +4,7 @@
 
 @section('content')
     <div class="p-3">
-        @if (session('message'))
-            <div class="mb-3 alert alert-success">
-                {{ session('message') }}
-            </div>
-        @endif
+        <div class="swal" data-swal="{{ session('message') }}"></div>
         <button class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#create-modal">Register</button>
         @include('backend.layouts.error-validation')
         <table class="table table-responsive">
@@ -31,11 +27,9 @@
                         <td>
                             <div class="text-center">
                                 <button class="btn btn-secondary btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#update-modal{{ $user->id }}"><i
-                                        class="bi bi-pencil-fill"></i></button>
+                                    data-bs-target="#update-modal{{ $user->id }}">Edit</button>
                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#delete-modal{{ $user->id }}"><i
-                                        class="bi bi-eraser-fill"></i></button>
+                                    data-bs-target="#delete-modal{{ $user->id }}">Delete</button>
                             </div>
                         </td>
                     </tr>
@@ -44,7 +38,23 @@
         </table>
     </div>
 
-    {{-- @include('backend.category.create-modal')
-    @include('backend.category.update-modal')
-    @include('backend.category.delete-modal') --}}
+    @include('backend.user.create-modal')
+    @include('backend.user.update-modal')
+    @include('backend.user.delete-modal')
 @endsection
+@push('js')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // Success Alert
+        const swal = $('.swal').data('swal')
+        if (swal) {
+            Swal.fire({
+                title: 'Success',
+                text: swal,
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        }
+    </script>
+@endpush
