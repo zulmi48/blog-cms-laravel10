@@ -3,7 +3,7 @@
 
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script src="{{ asset('js/color-mode.js') }}"></script>
+    <script src="{{ asset('back/js/color-mode.js') }}"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -17,8 +17,8 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
-    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('back/css/custom.css') }}">
+    <link href="{{ asset('back/css/dashboard.css') }}" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('css')
 </head>

@@ -2,7 +2,7 @@
 @section('title', 'Article')
 @section('title-page', 'Article')
 @push('css')
-    <link href="{{ asset('css/datatables.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('back/css/datatables.min.css') }}" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -51,7 +51,7 @@
     </div>
 @endsection
 @push('js')
-    <script src="{{ asset('js/datatables.min.js') }}"></script>
+    <script src="{{ asset('back/js/datatables.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {{-- Data Table --}}
     <script>
