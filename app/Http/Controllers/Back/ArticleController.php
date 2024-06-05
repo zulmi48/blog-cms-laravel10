@@ -86,7 +86,6 @@ class ArticleController extends Controller
         }
 
         $validated['slug'] = Str::slug($validated['title']);
-        $validated['views'] = 0;
 
         Article::find($id)->update($validated);
         return redirect()->route('article.index')->with('message', 'Article has been updated');
