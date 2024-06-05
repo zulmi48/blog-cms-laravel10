@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // FrontEnd Route
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
+Route::post('/', HomeController::class)->name('home.search');
+// Route::get('/category/{slug}', HomeController::class)->name('home.category');
 
 // BackEnd Route
 Route::middleware(['auth'])->group(function () {
