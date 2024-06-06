@@ -18,6 +18,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::post('/', [HomeController::class, 'index'])->name('home.search');
 Route::get('p/{slug}', [PostController::class, 'show'])->name('home.show');
 Route::get('/category/{slug}', [HomeController::class, 'category'])->name('home.category');
+Route::get('/all-post', [PostController::class, 'showAll'])->name('home.all-post');
+Route::post('/all-post', [PostController::class, 'showAll'])->name('home.search-post');
 
 // BackEnd Route
 Route::middleware(['auth'])->group(function () {

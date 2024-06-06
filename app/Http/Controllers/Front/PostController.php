@@ -17,4 +17,22 @@ class PostController extends Controller
         $categories = Category::get();
         return view('frontend.home.show', compact('article', 'categories'));
     }
+
+    function showAll()
+    {
+        $keyword = request()->keyword;
+        if ($keyword) {
+            $articles = Article::with('categories')
+                ->whereStatus(1)
+                ->where('title', 'like', '%' . $keyword . '%')
+                ->latest()
+                ->paginate(9);
+        } else {
+            $articles = Article::with('categories')
+                ->latest()
+                ->whereStatus(1)
+                ->paginate(9);
+        }
+        return view('frontend.home.all-post', compact('articles', 'keyword'));
+    }
 }
