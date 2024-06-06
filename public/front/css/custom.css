@@ -1,0 +1,14 @@
+img.featured {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+img.post {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+.card-body.heigth {
+    position: relative;
+    height: 330px;
+}

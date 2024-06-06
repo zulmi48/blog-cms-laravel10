@@ -12,7 +12,7 @@ class HomeController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function index()
     {
         $keyword = request()->keyword;
         if ($keyword) {
@@ -25,12 +25,25 @@ class HomeController extends Controller
             $articles = Article::with('categories')
                 ->latest()
                 ->whereStatus(1)
-                ->simplePaginate(2);
+                ->simplePaginate(4);
         }
         $featured_post = Article::orderBy('views', 'desc')
             ->whereStatus(1)
             ->first();
         $categories = Category::get();
         return view('frontend.home.index', compact('featured_post', 'articles', 'categories'));
+    }
+
+    function category(string $slug)
+    {
+        $category_slug = $slug;
+        $category = Category::whereSlug($category_slug)->first();
+        $articles = Article::with('categories')
+            ->whereStatus(1)
+            ->whereCategoriesId($category->id)
+            ->latest()
+            ->paginate(6);
+        $categories = Category::get();
+        return view('frontend.home.index', compact('articles', 'categories'));
     }
 }

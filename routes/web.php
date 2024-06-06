@@ -4,6 +4,7 @@ use App\Http\Controllers\Back\ArticleController;
 use App\Http\Controllers\Back\CategoryController;
 use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -13,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // FrontEnd Route
-Route::get('/', HomeController::class)->name('home');
-Route::post('/', HomeController::class)->name('home.search');
-// Route::get('/category/{slug}', HomeController::class)->name('home.category');
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::post('/', [HomeController::class, 'index'])->name('home.search');
+Route::get('p/{slug}', [PostController::class, 'show'])->name('home.show');
+Route::get('/category/{slug}', [HomeController::class, 'category'])->name('home.category');
 
 // BackEnd Route
 Route::middleware(['auth'])->group(function () {
@@ -33,4 +35,4 @@ Route::middleware(['auth'])->group(function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

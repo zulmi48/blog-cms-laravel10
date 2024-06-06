@@ -12,6 +12,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <link href="{{ asset('front/css/styles.css') }}" rel="stylesheet" />
+    <link href="{{ asset('front/css/custom.css') }}" rel="stylesheet" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('css')
 </head>

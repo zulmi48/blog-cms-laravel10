@@ -1,5 +1,5 @@
 <div class="card mb-4">
-    <a href="#!"><img class="card-img-top" src="{{ asset('storage/back/'. $featured_post->img) }}"
+    <a href="#!"><img class="card-img-top featured" src="{{ asset('storage/back/'. $featured_post->img) }}"
             alt="..." /></a>
     <div class="card-body">
         <div class="small text-muted">{{ $featured_post->created_at->format('d M, Y') }}</div>

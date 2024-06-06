@@ -20,8 +20,8 @@
                 <div class="col-12">
                     @foreach ($categories as $category)
                         <span>
-                            <a href="{{ url('/category/' . $category->slug) }}"
-                                class="bg-info badge text-decoration-none">{{ $category->name }}</a>
+                            <a href="{{ route('home.category', $category->slug) }}"
+                                class="bg-info badge text-decoration-none">{{ $category->name }}</a>                            
                         </span>
                     @endforeach
                 </div>
