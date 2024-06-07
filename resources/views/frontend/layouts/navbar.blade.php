@@ -11,8 +11,23 @@
                 <li class="nav-item"><a class="nav-link @if (Route::currentRouteName() == 'home.all-post') active @endif"
                         href="{{ route('home.all-post') }}">Articles</a></li>
                 <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                {{-- <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Dashboard</a></li> --}}
+                @if (Auth::check())
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            {{ auth()->user()->name }}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{{ route('logout') }}">Log Out</a></li>
+                        </ul>
+                    </li>
+                @else
+                    <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Log In</a></li>
+                @endif
             </ul>
         </div>
     </div>
