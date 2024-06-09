@@ -1,6 +1,6 @@
 <div class="col-lg-4" data-aos="fade-left">
     <!-- Search widget-->
-    <div class="card mb-4" >
+    <div class="card mb-4">
         <div class="card-header">Search</div>
         <div class="card-body">
             <form action="{{ route('home.search') }}" method="post">
@@ -21,11 +21,25 @@
                     @foreach ($categories as $category)
                         <span>
                             <a href="{{ route('home.category', $category->slug) }}"
-                                class="bg-info badge text-decoration-none">{{ $category->name }}</a>                            
+                                class="bg-info badge text-decoration-none">{{ $category->name }} ({{ $category->articles_count }})</a>
                         </span>
                     @endforeach
                 </div>
             </div>
+        </div>
+    </div>
+    <!-- Popular Post widget-->
+    <div class="card mb-4">
+        <div class="card-header">Popular Post</div>
+        <div class="card-body">
+            <ul class="list-group">
+                @foreach ($popular_posts as $post)
+                    <li class="list-group-item">
+                        <img width="20%" src="{{ asset('storage/back/' . $post->img) }}" alt="">
+                        <a href="{{ route('home.show', $post->slug) }}" class="text-decoration-none text-black">{{ $post->title }}</a>
+                    </li>
+                @endforeach
+            </ul>
         </div>
     </div>
     <!-- Side widget-->
