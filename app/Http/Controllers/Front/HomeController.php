@@ -30,8 +30,7 @@ class HomeController extends Controller
         $featured_post = Article::orderBy('views', 'desc')
             ->whereStatus(1)
             ->first();
-        $categories = Category::get();
-        return view('frontend.home.index', compact('featured_post', 'articles', 'categories'));
+        return view('frontend.home.index', compact('featured_post', 'articles', ));
     }
 
     function category(string $slug)
@@ -43,7 +42,6 @@ class HomeController extends Controller
             ->whereCategoriesId($category->id)
             ->latest()
             ->paginate(6);
-        $categories = Category::get();
-        return view('frontend.home.index', compact('articles', 'categories'));
+        return view('frontend.home.index', compact('articles', ));
     }
 }

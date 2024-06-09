@@ -7,12 +7,13 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Laravel Blog</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="{{ asset('front/assets/favicon.ico') }}" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('front/css/styles.css') }}" rel="stylesheet" />
-    <link href="{{ asset('front/css/custom.css') }}" rel="stylesheet" />
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link href="{{ asset('front/css/custom.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     @stack('css')
 </head>
 
@@ -29,6 +30,10 @@
     @include('frontend.layouts.footer')
     <!-- Core theme JS-->
     <script src="{{ asset('front/js/scripts.js') }}"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
     @stack('js')
 </body>
 

@@ -1,6 +1,6 @@
-<div class="col-lg-4">
+<div class="col-lg-4" data-aos="fade-left">
     <!-- Search widget-->
-    <div class="card mb-4">
+    <div class="card mb-4" >
         <div class="card-header">Search</div>
         <div class="card-body">
             <form action="{{ route('home.search') }}" method="post">

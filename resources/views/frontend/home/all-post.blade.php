@@ -21,7 +21,7 @@
                         <small class="mb-2">Showing article with keyword "<strong>{{ $keyword }}</strong>"</small>
                     @endif
                     @forelse ($articles as $article)
-                        <div class="col-lg-4">
+                        <div class="col-lg-4" data-aos="fade-up">
                             <!-- Blog post-->
                             <div class="card mb-4">
                                 <a href="{{ route('home.show', $article->slug) }}"><img class="card-img-top post"

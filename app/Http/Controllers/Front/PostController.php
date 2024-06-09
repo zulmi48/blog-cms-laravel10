@@ -14,8 +14,8 @@ class PostController extends Controller
         $article = Article::whereSlug($slug)
             ->with('categories')
             ->firstOrFail();
-        $categories = Category::get();
-        return view('frontend.home.show', compact('article', 'categories'));
+        $article->increment('views');
+        return view('frontend.home.show', compact('article', ));
     }
 
     function showAll()

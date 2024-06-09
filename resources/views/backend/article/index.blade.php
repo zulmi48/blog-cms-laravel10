@@ -13,7 +13,7 @@
             <thead>
                 <tr>
                     <th>No.</th>
-                    <th>Title</th>
+                    <th width="300px">Title</th>
                     <th>Category</th>
                     <th>Views</th>
                     <th>Status</th>
