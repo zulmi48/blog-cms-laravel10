@@ -25,9 +25,20 @@
                     <section class="mb-5">
                         {!! $article->description !!}
                         </section>
+                        <div class="my-3">
+                            <p class="fw-bold h6">Share this article</p>
+                            <a href="https://www.facebook.com/sharer.php?u={{ url()->current() }}" class="btn btn-primary btn-sm" target="_blank">
+                                <i class="bi bi-facebook"></i>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="https://api.whatsapp.com/send?text={{ url()->current() }}" class="btn btn-success btn-sm" target="_blank">
+                                <i class="bi bi-whatsapp"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                        </div>
                 </article>
                 <!-- Comments section-->
-                <section class="mb-5">
+                {{-- <section class="mb-5">
                     <div class="card bg-light">
                         <div class="card-body">
                             <!-- Comment form-->
@@ -77,7 +88,7 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> --}}
             </div>
             <!-- Side widgets-->
             @include('frontend.layouts.widgets')
