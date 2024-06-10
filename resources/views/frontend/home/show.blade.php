@@ -13,7 +13,7 @@
                         <h1 class="fw-bolder mb-1">{{ $article->title }}</h1>
                         <!-- Post meta content-->
                         <div class="text-muted fst-italic mb-2">Posted on {{ $article->created_at->format('F d, Y') }} by
-                            Start Bootstrap</div>
+                            {{ $article->users->name }}</div>
                         <!-- Post categories-->
                         <a class="badge bg-secondary text-decoration-none link-light"
                             href="#!">{{ $article->categories->name }}</a>

@@ -39,6 +39,7 @@ class ArticleController extends Controller
         $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
         $file->storeAs('public/back/', $fileName);
 
+        $validated['user_id'] = auth()->user()->id;
         $validated['slug'] = Str::slug($validated['title']);
         $validated['img'] = $fileName;
         $validated['views'] = 0;
@@ -49,9 +50,8 @@ class ArticleController extends Controller
 
     public function show(string $slug)
     {
-        return view('backend.article.show', [
-            'article' => Article::where('slug', $slug)->firstOrFail(),
-        ]);
+        $article = Article::with('users')->where('slug', $slug)->firstOrFail();
+        return view('backend.article.show', compact('article'));
     }
 
     public function edit(string $id)

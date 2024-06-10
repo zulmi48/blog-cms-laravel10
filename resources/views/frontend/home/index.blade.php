@@ -19,7 +19,7 @@
                                     src="{{ asset('storage/back/' . $article->img) }}" alt="..." /></a>
                         <div class="card-body heigth">
                                 <div class="small text-muted">
-                                    {{ $article->created_at->format('d M, Y') }}
+                                    {{ $article->created_at->format('d M, Y') }}, Written by {{ $article->users->name }}
                                 </div>
                                 <span>
                                     <a href="{{ route('home.category', $article->categories->slug) }}"

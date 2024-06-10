@@ -16,13 +16,13 @@ class HomeController extends Controller
     {
         $keyword = request()->keyword;
         if ($keyword) {
-            $articles = Article::with('categories')
+            $articles = Article::with('categories', 'users')
                 ->whereStatus(1)
                 ->where('title', 'like', '%' . $keyword . '%')
                 ->latest()
                 ->paginate(6);
         } else {
-            $articles = Article::with('categories')
+            $articles = Article::with('categories', 'users')
                 ->latest()
                 ->whereStatus(1)
                 ->simplePaginate(4);

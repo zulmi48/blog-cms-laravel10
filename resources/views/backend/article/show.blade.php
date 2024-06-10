@@ -44,6 +44,10 @@
                 <th>Publish Date</th>
                 <td>{{ $article->publish_date }}</td>
             </tr>
+            <tr>
+                <th>Writer</th>
+                <td>{{ $article->users->name }}</td>
+            </tr>
         </table>
     </div>
 @endsection
