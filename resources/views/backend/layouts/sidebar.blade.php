@@ -43,12 +43,14 @@
             <hr class="my-3">
 
             <ul class="nav flex-column mb-auto">
+                @if (auth()->user()->role == 1)
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                    <a class="nav-link d-flex align-items-center gap-2 @if (Route::currentRouteName() == 'config.index') active @endif" href="{{ route('config.index') }}">
                         <i class="bi bi-gear"></i>
-                        Settings
+                        Configuration
                     </a>
                 </li>
+                @endif
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center gap-2" href="{{ route('logout') }}"
                         onclick="event.preventDefault();

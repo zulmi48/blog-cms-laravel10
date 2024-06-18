@@ -13,7 +13,14 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::with('categories')->latest()->get();
+        $author = auth()->user()->id;
+
+        if ($author != 1) {
+            $articles = Article::with('categories')->where('user_id', $author)->latest()->get();
+        } else {
+            $articles = Article::with('categories')->latest()->get();
+        }
+
         return view('backend.article.index', compact('articles'));
     }
 

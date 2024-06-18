@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Back\ArticleController;
 use App\Http\Controllers\Back\CategoryController;
+use App\Http\Controllers\Back\ConfigurationController;
 use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PostController;
@@ -27,6 +28,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('article', ArticleController::class);
     Route::resource('category', CategoryController::class)->only([
         'index', 'store', 'update', 'destroy'
+    ])->middleware('UserAccess:1');
+    Route::resource('config', ConfigurationController::class)->only([
+        'index', 'update',
     ])->middleware('UserAccess:1');
     Route::resource('user', UserController::class);
     // File Manager Route

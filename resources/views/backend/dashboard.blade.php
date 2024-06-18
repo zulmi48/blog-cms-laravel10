@@ -50,7 +50,7 @@
                                 <td>{{ $item->categories->name }}</td>
                                 <td>{{ $item->created_at->format('d M, Y') }}</td>
                                 <td>
-                                    <a href="{{ route('article.show', $item->id) }}"
+                                    <a href="{{ route('article.show', $item->slug) }}"
                                         class="btn btn-sm btn-outline-secondary">Detail</a>
                                 </td>
                             </tr>
@@ -78,7 +78,7 @@
                                 <td>{{ $item->categories->name }}</td>
                                 <td>{{ $item->views }}x</td>
                                 <td>
-                                    <a href="{{ route('article.show', $item->id) }}"
+                                    <a href="{{ route('article.show', $item->slug) }}"
                                         class="btn btn-sm btn-outline-secondary">Detail</a>
                                 </td>
                             </tr>
