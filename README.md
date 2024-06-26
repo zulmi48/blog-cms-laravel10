@@ -40,5 +40,5 @@ and
 
 ## Screenshots
 
-![App Screenshot](https://app.gemoo.com/share/image-annotation/664580472667529216?codeId=MlapG71LoeVVX&origin=screenshotuploader)
-![App Screenshot](https://app.gemoo.com/share/image-annotation/664580697675173888?codeId=DGYkwQrdbXx43&origin=screenshotuploader)
+![App Screenshot](https://ibb.co.com/wCQDQJ5)
+![App Screenshot](https://ibb.co.com/wW61JqQ)
